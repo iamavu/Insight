@@ -3,7 +3,7 @@
 
 __version__ = '0.0.1'
 
-from modules import * 
+from modules.github import github
 from termcolor import cprint
 
 def banner():
