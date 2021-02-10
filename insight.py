@@ -3,7 +3,7 @@
 
 __version__ = '0.0.1'
 
-from modules.github import github
+from modules.github import *
 from termcolor import cprint
 
 def banner():
@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 	banner()
 	github()
-	
+	cprint(f"Folder of user {user} has been created in the current directory!", 'blue')
 
 
 
