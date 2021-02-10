@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 	banner()
 	github()
-	cprint(f"Folder of user {user} has been created in the current directory!", 'blue')
+	
 
 
 
