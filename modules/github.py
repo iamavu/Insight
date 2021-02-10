@@ -1,16 +1,23 @@
 import requests
 import json
-import os
 import urllib
 import filetype
+import os
 import re
 import git
+import shutil
 
 from termcolor import cprint 
 from pathlib import Path
+from os import path
+
 
 print("Username : ")
 user = input()
+if path.exists(f"./{user}/github"):
+	shutil.rmtree(f"./{user}/github")
+else:
+	Path(f"./{user}/github").mkdir(parents=True, exist_ok=True)
 
 API_URL = "https://api.instantusername.com"
 
@@ -34,8 +41,8 @@ github_user_api = requests.get(f"https://api.github.com/users/{user}")
 github_user_data = github_user_api.json()
 
 def image():
-	Path(f"./{user}/github").mkdir(parents=True, exist_ok=True)
-		
+	
+	Path(f"./{user}/github").mkdir(parents=True, exist_ok=True)	
 	user_avatar_url = str(github_user_data.get('avatar_url'))
 	urllib.request.urlretrieve(user_avatar_url, f"./{user}/github/profile_pic")
 	kind = filetype.guess(f"./{user}/github/profile_pic")
