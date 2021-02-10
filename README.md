@@ -9,6 +9,7 @@
 ```sh
 pip install -r requirements.txt
 ```
+Insight Only works with python3
 
 ## Usage example
 
