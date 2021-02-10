@@ -4,6 +4,7 @@
 __version__ = '0.0.1'
 
 from modules import * 
+from termcolor import cprint
 
 def banner():
 	cprint("""
