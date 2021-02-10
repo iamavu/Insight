@@ -1,0 +1,4 @@
+requests
+filetype
+gitpython
+termcolor
