@@ -3,7 +3,7 @@
 
 __version__ = '0.0.1'
 
-from github import * 
+from modules import * 
 
 def banner():
 	cprint("""
