@@ -1,13 +1,12 @@
-#!/usr/bin/env python
-#INSIGHT - The OSINT Tool
+#INSIGHT
+version= '0.0.2'
 
-__version__ = '0.0.1'
-
+from modules.username import *
 from modules.github import *
 from termcolor import cprint
 
 def banner():
-	cprint("""
+	cprint(f"""
 
 
   _____           _       _     _   
@@ -18,17 +17,21 @@ def banner():
                     |___/           
 				> OSINT Tool
 				> Created by iamavu
-
+                                > v{version}
 
                     """, 'magenta')
 
-
+def insight():
+    banner()
+    userFetcher.setUser()
+    github()
+    
 
 if __name__ == '__main__':
+    insight()
 
-	banner()
-	github()
-	cprint(f"Folder of user {user} has been created in the current directory!", 'blue')
+
+    
 
 
 
