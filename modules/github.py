@@ -28,7 +28,7 @@ def github():
 
         apiData = apiLimit_page.json()
         data = apiData['resources']['core']['remaining']
-        if data < 9:
+        if data < 10:
             cprint("API Limt Exceeded for your IP, please try again after a while", 'red')
             global exceeded
             exceeded = True
@@ -44,10 +44,11 @@ def github():
             userExist = False
             
         else:
-            cprint(f"GitHub URL of {user} is {user_url}\n", 'cyan')
             userExist = True
             
-   
+    def userURL():
+        cprint(f"GitHub URL of {user} is {user_url}\n", 'cyan')
+    
     def folder():
 
         if path.exists(f"./{user}/github"):
@@ -251,9 +252,13 @@ def github():
             cprint(f"Wrong Choice", 'red')
             clonerepo()
 
+    def folder_creation():
+        cprint(f"GitHub folder of {user} has been created in the current directory", 'cyan')
+    
     checkAPI()
     user_check()
     if exceeded == False and userExist == True:
+            user_url()
             folder()
             image()
             user_follow()
@@ -261,6 +266,7 @@ def github():
             info()
             repo()
             clonerepo()
+            folder_creation()
 
     else:
         pass
