@@ -258,7 +258,7 @@ def github():
     checkAPI()
     user_check()
     if exceeded == False and userExist == True:
-            user_url()
+            userURL()
             folder()
             image()
             user_follow()
