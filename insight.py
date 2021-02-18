@@ -24,7 +24,10 @@ def banner():
 def insight():
     banner()
     userFetcher.setUser()
+    user = userFetcher.getUser()
     github()
+    cprint(f"Folder of {user} has been created in the current directory", 'cyan')
+    
     
 
 if __name__ == '__main__':
