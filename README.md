@@ -1,4 +1,5 @@
 # Insight
+![Insight Logo](https://imgur.com/a/zOIlAjl)
 > Insight is a OSINT tool, which gathers information about user via their usernames
 
 
