@@ -1,5 +1,7 @@
 # Insight
-![Insight Logo](https://imgur.com/a/zOIlAjl)
+
+<p align="center"><img src="https://user-images.githubusercontent.com/48346347/116286981-7c359800-a7ad-11eb-89fd-7ebd0d4b35a6.png"></p>
+
 > Insight is a OSINT tool, which gathers information about user via their usernames
 
 
