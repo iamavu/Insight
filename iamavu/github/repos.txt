@@ -1,4 +1,0 @@
-https://github.com/iamavu/awesome-awesome-awesome
-https://github.com/iamavu/ctf_writeups
-https://github.com/iamavu/Insight
-https://github.com/iamavu/pandora
