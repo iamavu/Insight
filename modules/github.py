@@ -39,7 +39,7 @@ def github():
     def user_check():
 
         if user_data.get('message') == 'Not Found':
-            cprint(f"User {user} not found", 'red')
+            cprint(f"User {user} not found on GitHub", 'red')
             global userExist
             userExist = False
             
@@ -252,8 +252,8 @@ def github():
             cprint(f"Wrong Choice", 'red')
             clonerepo()
 
-    def folder_creation():
-        cprint(f"GitHub folder of {user} has been created in the current directory", 'cyan')
+    #def folder_creation():
+        #cprint(f"GitHub folder of {user} has been created in the current directory", 'cyan')
     
     checkAPI()
     user_check()
@@ -266,7 +266,7 @@ def github():
             info()
             repo()
             clonerepo()
-            folder_creation()
+            #folder_creation()
 
     else:
         pass

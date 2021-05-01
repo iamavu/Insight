@@ -1,8 +1,9 @@
 #INSIGHT
-version= '0.0.2'
+version= '0.0.3'
 
 from modules.username import *
 from modules.github import *
+from modules.google import *
 from termcolor import cprint
 
 def banner():
@@ -24,8 +25,7 @@ def banner():
 def insight():
     banner()
     userFetcher.setUser()
-    github()
+    google()
     
 if __name__ == '__main__':
     insight()
-#test

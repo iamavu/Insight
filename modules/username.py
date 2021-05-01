@@ -2,7 +2,7 @@
 class userFetcher:
     user = ""
     def getUser():
-        global user
+        global user 
         return user
         
     def setUser():
