@@ -4,3 +4,4 @@ gitpython
 termcolor
 bs4
 lxml
+fake-useragent
