@@ -51,18 +51,18 @@ def github():
     
     def folder():
 
-        if path.exists(f"./{user}/github"):
-            shutil.rmtree(f"./{user}/github")
+        if path.exists(f"./reports/{user}/github"):
+            shutil.rmtree(f"./reports/{user}/github")
         else:
             pass
 
     def image():
 
-        Path(f"./{user}/github").mkdir(parents=True, exist_ok=True)	
+        Path(f"./reports/{user}/github").mkdir(parents=True, exist_ok=True)	
         user_avatar_url = str(user_data.get('avatar_url'))
-        urllib.request.urlretrieve(user_avatar_url, f"./{user}/github/profile_pic")
-        kind = filetype.guess(f"./{user}/github/profile_pic")
-        os.rename(rf'./{user}/github/profile_pic', rf'./{user}/github/profile_pic.{kind.extension}')
+        urllib.request.urlretrieve(user_avatar_url, f"./reports/{user}/github/profile_pic")
+        kind = filetype.guess(f"./reports/{user}/github/profile_pic")
+        os.rename(rf'./reports/{user}/github/profile_pic', rf'./reports/{user}/github/profile_pic.{kind.extension}')
 
     def user_follow():
 
@@ -83,7 +83,7 @@ def github():
 
                 followers = follower_data[i].get('login')
 
-                file = open(f"./{user}/github/followers.txt", 'a')
+                file = open(f"./reports/{user}/github/followers.txt", 'a')
                 file.write(followers + "\n")
                 file.close()
         
@@ -100,7 +100,7 @@ def github():
 
             followers = follower_data[i].get('login')
 
-            file = open(f"./{user}/github/followers.txt", 'a')
+            file = open(f"./reports/{user}/github/followers.txt", 'a')
             file.write(followers + "\n")
             file.close()
 
@@ -126,7 +126,7 @@ def github():
 
                 following = following_data[i].get('login')
 
-                file = open(f"./{user}/github/following.txt", 'a')
+                file = open(f"./reports/{user}/github/following.txt", 'a')
                 file.write(following + "\n")
                 file.close()
         
@@ -143,7 +143,7 @@ def github():
 
             followers = follower_data[i].get('login')
 
-            file = open(f"./{user}/github/following.txt", 'a')
+            file = open(f"./reports/{user}/github/following.txt", 'a')
             file.write(followers + "\n")
             file.close()
  
@@ -160,7 +160,7 @@ def github():
         bio = user_data.get('bio')
         twitter_username = user_data.get('twitter_username')
 
-        file = open(f"./{user}/github/info.txt", 'a')
+        file = open(f"./reports/{user}/github/info.txt", 'a')
 
         if user_name and user_name.strip():
             file.write(f"Possibl real name of the user {user} is {user_name}\n")
@@ -212,7 +212,7 @@ def github():
             for i in range(0, 100):
                 repos = repos_data[i].get('html_url')
 
-                file = open(f"./{user}/github/repos.txt", 'a')
+                file = open(f"./reports/{user}/github/repos.txt", 'a')
                 file.write(repos + "\n")
                 file.close()
 
@@ -228,21 +228,21 @@ def github():
         for i in range(0, int(remaining_repos)):
             repos = repos_data[i].get('html_url')
 
-            file = open(f"./{user}/github/repos.txt", 'a')
+            file = open(f"./reports/{user}/github/repos.txt", 'a')
             file.write(repos + "\n")
             file.close()    
 
     def clonerepo():
 
-        Path(f"./{user}/github/repos").mkdir(parents=True, exist_ok=True)
+        Path(f"./reports/{user}/github/repos").mkdir(parents=True, exist_ok=True)
         answer = input("Do you want to clone all the repos locally (y/n): ")
 
         if answer == 'y':
             cprint("Cloning the repos...", 'white')
-            with open(f'./{user}/github/repos.txt') as file:
+            with open(f'./reports/{user}/github/repos.txt') as file:
                 for line in file:
                     urls = re.findall('https?://\S+',line)
-                    git.Git(f"./{user}/github/repos").clone(urls[0])
+                    git.Git(f"./reports/{user}/github/repos").clone(urls[0])
 
                         
 
@@ -251,9 +251,6 @@ def github():
         else:
             cprint(f"Wrong Choice", 'red')
             clonerepo()
-
-    #def folder_creation():
-        #cprint(f"GitHub folder of {user} has been created in the current directory", 'cyan')
     
     checkAPI()
     user_check()
@@ -266,8 +263,6 @@ def github():
             info()
             repo()
             clonerepo()
-            #folder_creation()
-
     else:
         pass
 

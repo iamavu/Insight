@@ -22,20 +22,20 @@ def google():
 
     user = userFetcher.getUser()
     user = '"' + user + '"'
-    page = requests.get("https://www.google.com/search?q={}&num=15".format(user), headers = headers )
+    page = requests.get("https://www.google.com/search?q={}&num=25".format(user), headers = headers )
     soup = BeautifulSoup(page.content, 'html.parser')
     google_search_results = []
     links = []
-
+    
     def folder():
-        if path.exists(f"./{user}/google"):
-            shutil.rmtree(f"./{user}/google")
+        if path.exists(f"./reports/{user}/google".replace('"', '')):
+            shutil.rmtree(f"./reports/{user}/google".replace('"', ''))
         else:
             pass
-    Path(f"./{user}/google".replace('"', '')).mkdir(parents=True, exist_ok=True)
+        Path(f"./reports/{user}/google".replace('"', '')).mkdir(parents=True, exist_ok=True)
 
     def gather_links():
-        cprint(f"Gathering links for {user}".replace('"', ''), "yellow")
+        cprint(f"Gathering URLs for {user} via Google Search".replace('"', ''), "yellow")
         #find all the links from google search results
         try:
             for link in soup.find_all("a",href=re.compile("(?<=/url\?q=)(htt.*://.*)")):
@@ -55,7 +55,7 @@ def google():
             links.append(link)
         
         for link in links:
-            file = open(f"./{user}/google/links.txt".replace('"', ''), 'a')
+            file = open(f"./reports/{user}/google/links.txt".replace('"', ''), 'a')
             file.write(link + "\n")
             file.close()
 
@@ -65,7 +65,7 @@ def google():
             link = "".join(link)
             try:
                 response = requests.get(link)
-                cprint(f"Response Code for {link} is {response.status_code}",'cyan')
+                cprint(f"{link} -> {response.status_code}",'cyan')
             except requests.exceptions.ConnectionError:
                 cprint(f"{link} seems unreachable D:", "red")
 
@@ -88,7 +88,7 @@ def google():
         if isDev == True:
             print('\n')
             cprint(f"{user} is probably into programming".replace('"',''), "green")
-            cprint(f"Do you want to run the GitHub Module for the user?[y/n]","yellow")
+            cprint(f"\nDo you want to run the GitHub Module for the user?[y/n]","yellow")
             choice = input(">")
             print('\n')
             if choice == 'y' or choice == 'Y':
@@ -101,14 +101,14 @@ def google():
         
     def real_name():
         linkedin_name = []
-        name = user + " linkedin"
+        name = user + " site:linkedin.com"
         search = requests.get("https://www.google.com/search?q={}&num=1".format(name), headers = headers )
         linkedin_soup = BeautifulSoup(search.content, 'html.parser')
 
         for link in linkedin_soup.find_all("a",href=re.compile("(?<=/url\?q=)(htt.*://.*)")):
             linkedin_name.append(re.split(":(?=http)",link["href"].replace("/url?q=","").split('&')[0]))
             if linkedin_name == None and 'www.linkedin.com' in linkedin_name:
-                cprint(f"LinkedIn for {user} doesn't exist")
+                cprint(f"LinkedIn for {user} doesn't exist".replace('"', ''), 'red')
             else:
                 pass
         try:
@@ -116,11 +116,11 @@ def google():
             name = link_name.split()
             name = name[0] + ' ' + name[1]
             cprint(f"{user}'s possible real name is {name}(via LinkedIn)".replace('"',''),"green")
-            file = open(f"./{user}/google/name.txt".replace('"', ''), 'a')
+            file = open(f"./reports/{user}/google/name.txt".replace('"', ''), 'a')
             file.write(f"{user}'s possible real name is {name}(via LinkedIn)".replace('"', ''))
             file.close()
         except AttributeError:
-            print(f"{user} probably doesn't have LinkedIn")
+            cprint(f"{user} probably doesn't have LinkedIn".replace('"', ''), 'red')
 
     def folder_creation():
         cprint(f"Folder of {user} has been created in the current directory".replace('"', ''), 'cyan')

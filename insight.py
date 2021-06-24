@@ -28,4 +28,7 @@ def insight():
     google()
     
 if __name__ == '__main__':
-    insight()
+    try:
+        insight()
+    except KeyboardInterrupt:
+        cprint("\nKeyboard Interrup received! Aborted!", 'red')
