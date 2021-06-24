@@ -22,6 +22,8 @@ python insight.py
 
 ## Release History
 
+* 0.0.4
+    * Fixed bugs and created reports folder
 * 0.0.3
     * Added Google Search Crawler 
 * 0.0.2
