@@ -31,4 +31,4 @@ if __name__ == '__main__':
     try:
         insight()
     except KeyboardInterrupt:
-        cprint("\nKeyboard Interrup received! Aborted!", 'red')
+        cprint("\nKeyboard Interrupt received! Aborted!", 'red')
